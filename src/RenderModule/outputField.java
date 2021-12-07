@@ -9,12 +9,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
-public class Screen extends JPanel {
+public class outputField extends JPanel {
     int w, h;
 
     Entities entities;
 
-    public Screen() {
+    public outputField() {
         w = 880;
         h = 520;
         setBounds(200, 0, w, h);

@@ -1,13 +1,11 @@
 package SimulationModule;
 
-import RenderModule.Screen;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Entities {
-    List<TestEntity> entities;
+    static List<TestEntity> entities;
 
     public Entities() {
         entities = new ArrayList<>();
@@ -24,4 +22,13 @@ public class Entities {
             entities.get(i).run(g);
         }
     }
+
+    public static void add(){
+        entities.add(new TestEntity(new Vec(100, 100)));
+    }
+
+    public static void rmAll(){
+        entities.clear();
+    }
+
 }

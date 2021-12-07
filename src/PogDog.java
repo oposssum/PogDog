@@ -1,4 +1,5 @@
-import RenderModule.Screen;
+import RenderModule.LeftPanel;
+import RenderModule.outputField;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,16 +17,14 @@ public class PogDog {
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jf.setLayout(null);
 
-        LJp = new JPanel();
-        LJp.setBounds(0,0, 200, 520);
-        LJp.setBackground(Color.DARK_GRAY);
+        LJp = new LeftPanel() ;
+
 
         BJp = new JPanel();
         BJp.setBounds(0, 520, 1080, 200);
         BJp.setBackground(Color.YELLOW);
 
-        screen = new Screen();
-        //scene.setBounds(100, 0, 980, 620);
+        screen = new outputField();
 
 
         new Timer(1, (ActionEvent e) -> {
