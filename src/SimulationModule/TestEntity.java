@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 
+//NaPE
 public class TestEntity {
     public int size;
     public Path2D shape = new Path2D.Double();
@@ -41,7 +42,7 @@ public class TestEntity {
         g.setTransform(save);
     }
 
-    public void run(Graphics2D g){
+    public void run(Graphics2D g, long frameDelta){
         move(new Vec(Math.random(), Math.random()));
         draw(g);
     }

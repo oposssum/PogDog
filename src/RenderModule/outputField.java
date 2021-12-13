@@ -1,27 +1,37 @@
 package RenderModule;
 
 import SimulationModule.Entities;
-import SimulationModule.TestEntity;
 import SimulationModule.Vec;
 
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class outputField extends JPanel {
     int w, h;
 
     Entities entities;
 
+    long frameDelta = 0;
+
     public outputField() {
-        w = 880;
+        w = 980;
         h = 520;
-        setBounds(200, 0, w, h);
+        setBounds(100, 0, w, h);
 
         entities = new Entities();
         entities.testSpawn();
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                Entities.add(new Vec(e.getX(), e.getY()));
+            }
+        });
     }
+
+
 
     public void paintComponent(Graphics gg) {
         super.paintComponent(gg);
@@ -29,7 +39,10 @@ public class outputField extends JPanel {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
 
-        entities.run(g);
+        long start = System.nanoTime();
+        entities.run(g, frameDelta);
+        frameDelta = System.nanoTime() - start; // Delta time in ms
+        System.out.println(frameDelta);
     }
 
 

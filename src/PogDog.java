@@ -1,3 +1,4 @@
+import RenderModule.BottomPanel;
 import RenderModule.LeftPanel;
 import RenderModule.outputField;
 
@@ -8,7 +9,7 @@ import java.awt.event.ActionEvent;
 //Program entry point. Just some configuration going on
 public class PogDog {
     JFrame jf;
-    JPanel LJp, BJp, screen;
+    JPanel LJp, BJp, OF;
 
     PogDog() {
         jf = new JFrame("PogDog");
@@ -16,25 +17,22 @@ public class PogDog {
         jf.setResizable(false);
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jf.setLayout(null);
+        jf.setBackground(Color.MAGENTA);
 
         LJp = new LeftPanel() ;
 
+        BJp = new BottomPanel();
 
-        BJp = new JPanel();
-        BJp.setBounds(0, 520, 1080, 200);
-        BJp.setBackground(Color.YELLOW);
+        OF = new outputField();
 
-        screen = new outputField();
-
-
-        new Timer(1, (ActionEvent e) -> {
-            screen.repaint();
-        }).start();
+        new Timer(1, (ActionEvent e) ->
+                OF.repaint()
+        ).start();
 
         jf.setBackground(Color.BLACK);
         jf.add(LJp);
         jf.add(BJp);
-        jf.add(screen);
+        jf.add(OF);
 
         jf.setVisible(true);
     }
